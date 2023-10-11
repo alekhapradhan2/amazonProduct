@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="ProductCount">
+      <class name="SomeAutomationScripts.WindowHandle">
         <methods>
-          <include name="countTotalProduct"/>
+          <include name="windowHandle"/>
         </methods>
-      </class> <!-- ProductCount -->
+      </class> <!-- SomeAutomationScripts.WindowHandle -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
