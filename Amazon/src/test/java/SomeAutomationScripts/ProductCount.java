@@ -1,3 +1,4 @@
+package SomeAutomationScripts;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,15 +8,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
-public class ProductCount {
+import Utils.AppUtils;
+
+public class ProductCount extends AppUtils {
 	
 	@Test
-	public void countTotalProduct() throws InterruptedException
+	public void countTotalProduct()throws InterruptedException 
 	{
-		System.setProperty("web.chrome.driver", "chromedriver.exe");
-		WebDriver driver=new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.get("http://amazon.com");
+		AppUtils.openApp("https://amazon.com");
 		driver.findElement(By.id("twotabsearchtextbox")).sendKeys("Computer");
 		driver.findElement(By.id("nav-search-submit-button")).click();
 		List<WebElement> computers = new ArrayList<>();
@@ -27,7 +27,7 @@ public class ProductCount {
 		String data=next.getAttribute("class");
 		while(!data.contains("disabled"))
 		{
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			next.click();
 			driver.navigate().refresh();
 			next=driver.findElement(By.xpath("//*[contains(@class,'s-pagination-next')]"));
@@ -36,7 +36,9 @@ public class ProductCount {
 			totalitems=totalitems+computers.size();
 		}
 		System.out.println(totalitems);
-		driver.close();	
+		AppUtils.closeApp();
+		
+		
 	}
 
 }
